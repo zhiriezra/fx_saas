@@ -18,15 +18,16 @@ class TeamSeeder extends Seeder
         $user = User::create([
             'firstname' => 'Kolo',
             'lastname' => 'Zhiri',
-            'phone' => '09058090058',
-            'email' => 'fman@test.com',
+            'phone' => '09058090055',
+            'email' => 'tropicana@test.com',
             'user_type_id' => 4,
             'password' => bcrypt('password'),
         ]);
 
         $team = $user->ownedTeams()->create([
-            'name' => 'Flower Mill',
-            'domain' => 'fmn',
+            'name' => 'Premier Tropicana',
+            'team_type_id' => 4,
+            'domain' => 'tropicana',
             'personal_team' => false,
         ]);
 

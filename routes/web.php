@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgentsController;
 use App\Models\Agent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -24,15 +25,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/agents', function (){
+    // Agents routes
+    Route::get('/agents', [AgentsController::class, 'index'])->name('agents');
+    Route::get('/agents/{uuid}', [AgentsController::class, 'show'])->name('agent.show');
 
-        $agents = Agent::all();
-
-        return $agents;
-
-    })->name('agents');
 });
-
 
 
 Route::domain('{domain}.fx-saas.test')->group(function (){

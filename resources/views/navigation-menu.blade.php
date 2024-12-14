@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('agents') }}" :active="request()->routeIs('agents')">
+                    <x-nav-link href="{{ route('agents') }}" :active="request()->is('agents*')">
                         {{ __('Agents') }}
                     </x-nav-link>
                 </div>
