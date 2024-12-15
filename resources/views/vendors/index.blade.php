@@ -1,14 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Agents') }}
+            {{ __('vendors') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex gap-4">
 
-            @include('components.value-chain-submenu')
+            @include('components.sales-submenu')
 
             <div class="w-5/6">
                 <div class="p-6 lg:p-6 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
@@ -47,7 +47,10 @@
                                             Image
                                         </th>
                                         <th scope="col" class="px-6 py-3">
-                                            Name
+                                            Hub
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Manager
                                         </th>
                                         <th scope="col" class="px-6 py-3">
                                             Phone
@@ -61,7 +64,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="">
-                                    @forelse ($agents as $key => $agent)
+                                    @forelse ($vendors as $key => $vendor)
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                             <td class="px-6 py-4">
                                                 {{ $key+1 }}
@@ -70,15 +73,18 @@
                                                 <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                                             </td>
                                             <td class="px-6 py-4">
-                                                <a href="{{ route('agent.show', ['uuid' => $agent->user->uuid]) }}" class="hover:text-blue-300 hover:underline">
-                                                    {{ $agent->user->firstname }} {{ $agent->user->lastname }}
+                                                {{ $vendor->business_name }}
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                <a href="{{ route('vendor.show', ['uuid' => $vendor->uuid]) }}" class="hover:text-blue-300 hover:underline">
+                                                    {{ $vendor->user->firstname }} {{ $vendor->user->lastname }}
                                                 </a>
                                             </td>
                                             <td class="px-6 py-4">
-                                                {{ $agent->user->phone }}
+                                                {{ $vendor->user->phone }}
                                             </td>
                                             <td class="px-6 py-4">
-                                                {{ $agent->state->name }}, {{ $agent->lga->name }}
+                                                {{ $vendor->state->name }}, {{ $vendor->lga->name }}
                                             </td>
                                             <td>
                                                 some actions
@@ -87,7 +93,7 @@
                                     @empty
                                     <tr>
                                         <td colspan="6" class="text-center">
-                                            <p class="text-red-300">No agents for deployed for your company</p>
+                                            <p class="text-red-300">No vendors for deployed for your company</p>
                                         </td>
 
                                     </tr>

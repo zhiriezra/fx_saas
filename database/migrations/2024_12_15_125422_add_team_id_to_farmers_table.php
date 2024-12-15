@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('agents', function (Blueprint $table) {
-            $table->foreignId('team_id')->nullable()->after('id');
+        Schema::table('farmers', function (Blueprint $table) {
+            $table->foreignId('team_id')->nullable()->after('uuid');
         });
     }
 
@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('agents', function (Blueprint $table) {
+        Schema::table('farmers', function (Blueprint $table) {
             $table->dropColumn('team_id');
         });
     }

@@ -1,3 +1,4 @@
+            $table->uuid('uuid')->unique()->nullable()->after('id');
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -8,20 +9,26 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
+            $table->uuid('uuid')->unique()->nullable()->after('id');
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('uuid');
+        });
     }
 };
+

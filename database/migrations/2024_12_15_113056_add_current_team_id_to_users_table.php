@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('agents', function (Blueprint $table) {
-            $table->foreignId('team_id')->nullable()->after('id');
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreignId('current_team_id')->nullable();
+            $table->string('profile_photo_path', 2048)->nullable();
         });
     }
 
@@ -25,8 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('agents', function (Blueprint $table) {
-            $table->dropColumn('team_id');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('current_team_id');
+            $table->dropColumn('profile_photo_path');
         });
     }
 };

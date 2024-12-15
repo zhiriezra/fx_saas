@@ -20,10 +20,27 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('value-chain.index') }}" :active="request()->is('value-chain*')">
+                        {{ __('Value-chain Information') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('sales.index') }}" :active="request()->is('sales*')">
+                        {{ __('Sales Information') }}
+                    </x-nav-link>
+                </div>
+
+                {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('agents') }}" :active="request()->is('agents*')">
+                        {{ __('Sales') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('agents') }}" :active="request()->is('agents*')">
                         {{ __('Agents') }}
                     </x-nav-link>
-                </div>
+                </div> --}}
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">

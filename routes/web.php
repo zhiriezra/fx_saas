@@ -1,6 +1,11 @@
 <?php
 
 use App\Http\Controllers\AgentsController;
+use App\Http\Controllers\FarmersController;
+use App\Http\Controllers\FarmsController;
+use App\Http\Controllers\SalesController;
+use App\Http\Controllers\ValueChainsController;
+use App\Http\Controllers\VendorsController;
 use App\Models\Agent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -25,9 +30,31 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         return view('dashboard');
     })->name('dashboard');
 
+    // Value-chain departments
+    Route::get('/value-chain', [ValueChainsController::class, 'index'])->name('value-chain.index');
+
     // Agents routes
-    Route::get('/agents', [AgentsController::class, 'index'])->name('agents');
-    Route::get('/agents/{uuid}', [AgentsController::class, 'show'])->name('agent.show');
+    Route::get('/value-chain/agents', [AgentsController::class, 'index'])->name('agents');
+    Route::get('/value-chain/agents/{uuid}', [AgentsController::class, 'show'])->name('agent.show');
+
+    // Farmers routes
+    Route::get('/value-chain/farmers', [FarmersController::class, 'index'])->name('farmers');
+    Route::get('/value-chain/farmers/{uuid}', [FarmersController::class, 'show'])->name('farmer.show');
+
+    // Farms routes
+    Route::get('/value-chain/farms', [FarmsController::class, 'index'])->name('farms');
+    Route::get('/value-chain/farms/{uuid}', [FarmsController::class, 'show'])->name('farm.show');
+
+
+    // Value-chain departments
+    Route::get('/sales', [SalesController::class, 'index'])->name('sales.index');
+
+    // Vendors
+    Route::get('/sales/vendors', [VendorsController::class, 'index'])->name('vendors');
+    Route::get('/sales/vendors/{uuid}', [VendorsController::class, 'show'])->name('vendor.show');
+
+
+
 
 });
 

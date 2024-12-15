@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Agent extends Model
 {
     use HasFactory;
+    protected $fillable = ['uuid'];
 
     public function user(){
         return $this->belongsTo(User::class);

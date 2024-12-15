@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agent;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AgentsController extends Controller
@@ -13,7 +14,7 @@ class AgentsController extends Controller
     }
 
     public function show($uuid){
-        $agent = Agent::where('uuid', $uuid)->first();
+        $agent = User::where('uuid', $uuid)->firstOrFail()->agent;
         return view('agents.show', compact('agent'));
     }
 }
