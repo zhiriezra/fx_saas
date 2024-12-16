@@ -81,7 +81,7 @@
                                                 {{ $agent->state->name }}, {{ $agent->lga->name }}
                                             </td>
                                             <td class="text-center">
-                                                <a href="{{ route('agent.show', ['uuid' => $agent->user->uuid]) }}" class="bg-green-500 hover:bg-green-600 px-2 py-1 rounded text-white">View</a>
+                                                <a href="{{ route('agent.show', ['uuid' => $agent->user->uuid]) }}" class="bg-blue-500 hover:bg-blue-600 px-2 py-1 rounded text-white">View</a>
                                             </td>
                                         </tr>
                                     @empty
