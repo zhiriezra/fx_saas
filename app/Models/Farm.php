@@ -13,7 +13,7 @@ class Farm extends Model
 
     public function farmer()
     {
-        return $this->belongsTo(Farmer::class, 'farmer_id');
+        return $this->belongsTo(Farmer::class);
     }
 
     public function state()

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class FarmsController extends Controller
 {
     public function index(){
-        $farms = Farm::with('farmer')->get();
+        $farms = Farm::get();
         return view('farms.index', compact('farms'));
     }
 
