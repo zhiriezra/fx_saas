@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use App\Models\Agent;
 use App\Models\Farm;
 use App\Models\Farmer;
-use App\Models\Vendor;
+use App\Models\FarmSeason;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -30,7 +30,7 @@ class EnsureCurrentTeam
                 $builder->where('team_id', $id);
             });
 
-            Vendor::addGlobalScope(function($builder) use ($id){
+            FarmSeason::addGlobalScope(function($builder) use ($id){
                 $builder->where('team_id', $id);
             });
 
