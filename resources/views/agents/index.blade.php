@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex gap-4">
 
-            @include('components.value-chain-submenu')
+            @include('components.sales-submenu')
 
             <div class="w-5/6">
                 <div class="p-6 lg:p-6 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">

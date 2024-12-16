@@ -44,9 +44,6 @@
                                             #
                                         </th>
                                         <th scope="col" class="px-6 py-3">
-                                            Image
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
                                             Hub
                                         </th>
                                         <th scope="col" class="px-6 py-3">
@@ -70,15 +67,12 @@
                                                 {{ $key+1 }}
                                             </td>
                                             <td class="px-6 py-4">
-                                                <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                {{ $vendor->business_name }}
-                                            </td>
-                                            <td class="px-6 py-4">
                                                 <a href="{{ route('vendor.show', ['uuid' => $vendor->uuid]) }}" class="hover:text-blue-300 hover:underline">
-                                                    {{ $vendor->user->firstname }} {{ $vendor->user->lastname }}
+                                                    {{ $vendor->business_name }}
                                                 </a>
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                {{ $vendor->user->firstname }} {{ $vendor->user->lastname }}
                                             </td>
                                             <td class="px-6 py-4">
                                                 {{ $vendor->user->phone }}

@@ -1,4 +1,4 @@
-<div class="w-1/6 bg-white py-6 shadow-xl sm:rounded-lg overflow-y-auto max-h-screen h-full">
+<div class="w-1/6 bg-white py-6 shadow-xl sm:rounded-b-lg overflow-y-auto max-h-screen h-full">
 
     <div class="space-y-4 text-center">
         <div class="border-0 border-b pb-6 font-semibold">

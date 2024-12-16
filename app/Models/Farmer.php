@@ -26,11 +26,6 @@ class Farmer extends Model
         return $this->belongsTo(Lga::class);
     }
 
-    public function farm()
-    {
-        return $this->hasMany(Farmer::class);
-    }
-
     public function farms()
     {
         return $this->hasMany(Farm::class);
