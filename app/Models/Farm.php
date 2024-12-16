@@ -26,4 +26,7 @@ class Farm extends Model
         return $this->belongsTo(Lga::class);
     }
 
+    public function farm_seasons(){
+        return $this->hasMany(FarmSeason::class);
+    }
 }

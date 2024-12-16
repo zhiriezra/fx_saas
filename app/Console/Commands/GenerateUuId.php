@@ -27,7 +27,7 @@ class GenerateUuId extends Command
      */
     public function handle()
     {
-        \App\Models\User::whereNull('uuid')->chunk(100, function ($users) {
+        \App\Models\FarmVisitation::whereNull('uuid')->chunk(100, function ($users) {
             foreach ($users as $user) {
                 $user->update(['uuid' => (string) \Illuminate\Support\Str::uuid()]);
             }

@@ -21,7 +21,7 @@
                                     </svg>
 
                                 </a>
-                                <img src="{{ asset('assets/images/logo-mark.png') }}" alt="" class="shadow-md rounded-full border h-20 w-20">
+                                <img src="{{ $agent->user->profile_image? : asset('assets/images/logo-mark.png') }}" alt="" class="shadow-md rounded-full border h-20 w-20">
 
                                 <div class="flex flex-col">
                                     <h4 class="text-2xl font-semibold">{{ $agent->user->firstname .' '. $agent->user->lastname  }}</h4>

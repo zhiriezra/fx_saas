@@ -30,13 +30,19 @@
                                             #
                                         </th>
                                         <th scope="col" class="px-6 py-3">
-                                            Farmer
+                                            Commodity
                                         </th>
                                         <th scope="col" class="px-6 py-3">
-                                            Location
+                                            Planted date
                                         </th>
                                         <th scope="col" class="px-6 py-3">
-                                            Size
+                                            Harvested date
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Season Year
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Farm Location
                                         </th>
                                         <th scope="col" class="px-6 py-3">
                                             Action
@@ -44,24 +50,32 @@
                                     </tr>
                                 </thead>
                                 <tbody class="">
-                                    @forelse ($farms as $key => $farm)
+                                    @forelse ($farm_seasons as $key => $farm_season)
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                             <td class="px-6 py-4">
                                                 {{ $key+1 }}
                                             </td>
                                             <td class="px-6 py-4">
-                                                {{ $farm->farmer->fname .' '. $farm->farmer->lname ?? 'Not available' }}
+                                                {{ $farm_season->commodity }}
                                             </td>
                                             <td class="px-6 py-4">
-                                                {{ $farm->state->name }}, {{ $farm->lga->name }}
+                                                {{ $farm_season->planted_date }}
                                             </td>
 
                                             <td class="px-6 py-4">
-                                                {{ $farm->size }}
+                                                {{ $farm_season->harvested_at? : 'not harvested' }}
                                             </td>
 
-                                            <td>
-                                                some actions
+                                            <td class="px-6 py-4">
+                                                {{ $farm_season->season_year }}
+                                            </td>
+
+                                            <td class="px-6 py-4">
+                                                {{ $farm_season->farm->state->name .', '. $farm_season->farm->lga->name }}
+                                            </td>
+
+                                            <td class="text-center">
+                                                <a href="{{ route('farm.show', ['uuid' => $farm_season->uuid]) }}" class="bg-blue-500 hover:bg-blue-600 px-2 py-1 rounded text-white">View</a>
                                             </td>
                                         </tr>
                                     @empty
