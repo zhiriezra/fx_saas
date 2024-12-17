@@ -18,6 +18,9 @@
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
         <x-banner />
 
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -41,5 +44,6 @@
         @stack('modals')
 
         @livewireScripts
+
     </body>
 </html>
