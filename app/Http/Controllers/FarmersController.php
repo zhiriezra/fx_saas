@@ -12,4 +12,17 @@ class FarmersController extends Controller
         $farmers = Farmer::get();
         return view('farmers.index', compact('farmers'));
     }
+
+    public function show($uuid)
+    {
+
+        $farmer = Farmer::where('uuid', $uuid)->first();
+
+        if (!$farmer) {
+            return abort(404, 'Farmer not found');
+        }
+
+        return view('farmers.show', compact('farmer'));
+
+    }
 }
