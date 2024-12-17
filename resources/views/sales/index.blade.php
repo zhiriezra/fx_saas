@@ -18,7 +18,7 @@
                     </h1>
 
                     <p class="mt-6 text-gray-500 dark:text-gray-400 leading-relaxed">
-                        Some stats go here
+                        See information about farms, farmers, agents, hubs on this dashboard.
                     </p>
                 </div>
 

@@ -30,4 +30,8 @@ class Vendor extends Model
     {
         return $this->belongsTo(Lga::class, 'lga_id');
     }
+
+    public function bank_info(){
+        return $this->belongsTo(Bank::class, 'bank');
+    }
 }

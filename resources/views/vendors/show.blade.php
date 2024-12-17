@@ -148,7 +148,7 @@
 
                                 <div class="bg-gray-100 rounded p-2">
                                     <h4 class="text-sm text-gray-500">Bank Name</h4>
-                                    <p>{{ $vendor->bank? : 'Not provided' }}</p>
+                                    <p>{{ $vendor->bank_info->name? : 'Not provided' }}</p>
                                 </div>
 
                                 <div class="bg-gray-100 rounded p-2">

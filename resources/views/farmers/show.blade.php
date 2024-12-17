@@ -61,7 +61,7 @@
                                     <div class="space-y-4">
                                         <div class="bg-gray-100 rounded p-2">
                                             <h4 class="text-sm text-gray-500">Agent Phone No</h4>
-                                            <p>{{ optional($farmer->agent->user->phone) }}</p>
+                                            <p>{{ optional($farmer)->agent->user->phone ?? '' }}</p>
                                         </div>
 
                                         <div class="bg-gray-100 rounded p-2">
