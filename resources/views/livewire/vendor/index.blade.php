@@ -2,7 +2,7 @@
     <div class="p-1 lg:p-1 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
         <div class="p-10 grid grid-cols-2 gap-8 justify-between">
             <div class="space-y-4">
-                <button wire:click="exportVendorsToExcel"  type="button" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
+                <button wire:click="exportVendorsToExcel"  type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-500 dark:focus:ring-green-800">
                     <span wire:loading.remove wire:target="exportVendorsToExcel">Export</span>
                         <span wire:loading wire:target="exportVendorsToExcel">
                             <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
@@ -16,10 +16,28 @@
                 </script>
             </div>
 
-            <div class="space-y-4 w-52 justify-self-end">
-                <input wire:model.debounce.500ms="search"  type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." required />
-
+            
+            <div class="relative w-52 justify-self-end">
+                <!-- Search Input -->
+                <input 
+                    wire:model.debounce.500ms="search" 
+                    class="w-full border border-gray-300 rounded-md py-2 px-4 pr-10 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500" 
+                    placeholder="Search..." 
+                    type="search" 
+                    title="Search within table" 
+                    aria-controls="pc-dt-satetime-sorting"
+                >
+            
+                <!-- Loading Spinner -->
+                <div 
+                    wire:loading 
+                    wire:target="search" 
+                    class="absolute inset-y-1 right-1 flex items-center pr-3"
+                >
+                    <div class="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-green-500"></div>
+                </div>
             </div>
+            
             
         </div>
         <div>  

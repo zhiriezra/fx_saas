@@ -25,7 +25,6 @@
 
                                 <div class="flex flex-col">
                                     <h4 class="text-2xl font-semibold">{{ $vendor->user->firstname .' '. $vendor->user->lastname  }}</h4>
-                                    <p class="text-sm text-gray-400">Monthly income: {{ $vendor->monthly_income? : 'not provided' }}</p>
                                 </div>
                             </div>
                             <div>
