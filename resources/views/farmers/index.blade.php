@@ -73,7 +73,7 @@
                                     @empty
                                     <tr>
                                         <td colspan="6" class="text-center">
-                                            <p class="text-red-300">No farmers for deployed for your company</p>
+                                            <p class="text-red-300">No farmers deployed for your company</p>
                                         </td>
 
                                     </tr>

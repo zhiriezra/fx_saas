@@ -11,39 +11,39 @@
                 </button>
                 <script>
                     document.addEventListener('export-started', event => {
-                        alert(event.detail.message); 
+                        alert(event.detail.message);
                     });
                 </script>
             </div>
 
-            
+
             <div class="relative w-52 justify-self-end">
                 <!-- Search Input -->
-                <input 
-                    wire:model.debounce.500ms="search" 
-                    class="w-full border border-gray-300 rounded-md py-2 px-4 pr-10 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500" 
-                    placeholder="Search..." 
-                    type="search" 
-                    title="Search within table" 
+                <input
+                    wire:model.debounce.500ms="search"
+                    class="w-full border border-gray-300 rounded-md py-2 px-4 pr-10 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                    placeholder="Search..."
+                    type="search"
+                    title="Search within table"
                     aria-controls="pc-dt-satetime-sorting"
                 >
-            
+
                 <!-- Loading Spinner -->
-                <div 
-                    wire:loading 
-                    wire:target="search" 
+                <div
+                    wire:loading
+                    wire:target="search"
                     class="absolute inset-y-1 right-1 flex items-center pr-3"
                 >
                     <div class="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-green-500"></div>
                 </div>
             </div>
-            
-            
+
+
         </div>
-        <div>  
-            @if($notifications->isNotEmpty())  
-            <div>  
-              @foreach($notifications as $notification) 
+        <div>
+            @if($notifications->isNotEmpty())
+            <div>
+              @foreach($notifications as $notification)
               <div class="p-2">
                 <span id="badge-dismiss-default" class="inline-flex items-center px-2 py-1 me-2 text-sm font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300">
                     {{ $notification->data['message'] }}&nbsp;<a href="{{ $notification->data['download_link'] }}" class="font-bold text-blue-500 hover:text-blue-800"> Click to download</a>
@@ -55,10 +55,10 @@
                     </button>
                     </span>
                 </div>
-              @endforeach  
-            </div>  
-            @endif 
-             
+              @endforeach
+            </div>
+            @endif
+
           </div>
         <!-- Livewire Polling -->
         <script>
@@ -126,7 +126,7 @@
                         @empty
                         <tr>
                             <td colspan="6" class="text-center">
-                                <p class="text-red-300">No vendor found</p>
+                                <p class="text-red-300">No vendors deployed for your company</p>
                             </td>
 
                         </tr>
