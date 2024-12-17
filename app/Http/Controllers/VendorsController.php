@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class VendorsController extends Controller
 {
     public function index(){
-        $vendors = Vendor::get();
-        return view('vendors.index', compact('vendors'));
+        
+        return view('vendors.index');
     }
 
     public function show($uuid){

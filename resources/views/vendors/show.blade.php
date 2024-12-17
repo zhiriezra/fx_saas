@@ -16,12 +16,12 @@
                         <div class="flex justify-between items-center border-b pb-8">
                             <div class="flex gap-4 items-center">
                                 <a href="{{  route('vendors') }}" class="hover:font-bold">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8 hover:text-gray-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8 text-blue-500 hover:text-blue-600">
                                         <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-4.28 9.22a.75.75 0 0 0 0 1.06l3 3a.75.75 0 1 0 1.06-1.06l-1.72-1.72h5.69a.75.75 0 0 0 0-1.5h-5.69l1.72-1.72a.75.75 0 0 0-1.06-1.06l-3 3Z" clip-rule="evenodd" />
                                     </svg>
 
                                 </a>
-                                <img src="{{ asset('assets/images/logo-mark.png') }}" alt="" class="shadow-md rounded-full border h-20 w-20">
+                                <img src="{{ $vendor->user->profile_image? : asset('assets/images/logo-mark.png') }}" alt="" class="shadow-md rounded-full border h-20 w-20">
 
                                 <div class="flex flex-col">
                                     <h4 class="text-2xl font-semibold">{{ $vendor->user->firstname .' '. $vendor->user->lastname  }}</h4>
