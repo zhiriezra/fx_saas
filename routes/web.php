@@ -9,6 +9,7 @@ use App\Http\Controllers\VendorsController;
 use App\Models\Agent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Laravel\Jetstream\Rules\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,8 +53,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/sales/farms', [FarmsController::class, 'index'])->name('farms');
     Route::get('/sales/farms/{uuid}', [FarmsController::class, 'show'])->name('farm.show');
 
-
-
+    // Farm visitations
+    Route::get('sales/farms/{farm}/visitations', [FarmsController::class, 'farmVisitations'])->name('farm.farm-visitations');
 
 });
 
