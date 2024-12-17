@@ -2,9 +2,9 @@
     <div class="p-1 lg:p-1 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
         <div class="p-7 grid grid-cols-2 gap-8 justify-between">
             <div class="space-y-4">
-                <button wire:click="exportVendorsToExcel"  type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-500 dark:focus:ring-green-800">
-                    <span wire:loading.remove wire:target="exportVendorsToExcel">Export</span>
-                        <span wire:loading wire:target="exportVendorsToExcel">
+                <button wire:click="exportAgentsToExcel"  type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-500 dark:focus:ring-green-800">
+                    <span wire:loading.remove wire:target="exportAgentsToExcel">Export</span>
+                        <span wire:loading wire:target="exportAgentsToExcel">
                             <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
                             Exporting...
                         </span>
@@ -68,11 +68,11 @@
         </script>
         <!-- refreshing every 5 sec -->
         <div wire:poll.5s="refreshNotifications"></div>
-        <h4 class="text-2xl font-bold pl-7">Hub List <span class="text-lg font-normal">({{ $vendors->count() }})</span> </h4>
+        <h4 class="text-2xl font-bold pl-7">Agent List <span class="text-lg font-normal">({{ $agents->count() }})</span> </h4>
     </div>
 
-    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
 
+    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
         <div class="bg-gray-100 dark:bg-gray-800 bg-opacity-25 grid grid-cols-1 gap-6 lg:gap-8 p-6 lg:p-8">
 
             <div class="relative overflow-x-auto">
@@ -83,10 +83,10 @@
                                 #
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Hub
+                                Image
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Manager
+                                Name
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Phone
@@ -100,33 +100,33 @@
                         </tr>
                     </thead>
                     <tbody class="">
-                        @forelse ($vendors as $key => $vendor)
+                        @forelse ($agents as $key => $agent)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <td class="px-6 py-4">
                                     {{ $key+1 }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    <a href="{{ route('vendor.show', ['uuid' => $vendor->uuid]) }}" class="hover:text-blue-300 hover:underline">
-                                        {{ $vendor->business_name }}
+                                    <img class="h-8 w-8 rounded-full object-cover" src="{{ $agent->user->profile_image? : asset('assets/images/logo-mark.png') }}" alt="{{ Auth::user()->name }}" />
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="{{ route('agent.show', ['uuid' => $agent->user->uuid]) }}" class="hover:text-blue-300 hover:underline">
+                                        {{ $agent->user->firstname }} {{ $agent->user->lastname }}
                                     </a>
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $vendor->user->firstname }} {{ $vendor->user->lastname }}
+                                    {{ $agent->user->phone }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $vendor->user->phone }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $vendor->state->name }}, {{ $vendor->lga->name }}
+                                    {{ $agent->state->name }}, {{ $agent->lga->name }}
                                 </td>
                                 <td class="text-center">
-                                    <a href="{{ route('vendor.show', ['uuid' => $vendor->uuid]) }}" class="bg-blue-500 hover:bg-blue-600 px-2 py-1 rounded text-white">View</a>
+                                    <a href="{{ route('agent.show', ['uuid' => $agent->user->uuid]) }}" class="bg-blue-500 hover:bg-blue-600 px-2 py-1 rounded text-white">View</a>
                                 </td>
                             </tr>
                         @empty
                         <tr>
                             <td colspan="6" class="text-center">
-                                <p class="text-red-300">No vendors deployed for your company</p>
+                                <p class="text-red-300">No agents deployed for your company</p>
                             </td>
 
                         </tr>
@@ -137,8 +137,7 @@
             </div>
 
         </div>
-        <div class="p-4">
-            {{ $vendors->links() }}
-        </div>
+
     </div>
 </div>
+
