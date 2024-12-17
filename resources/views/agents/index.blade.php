@@ -67,7 +67,7 @@
                                                 {{ $key+1 }}
                                             </td>
                                             <td class="px-6 py-4">
-                                                <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                                <img class="h-8 w-8 rounded-full object-cover" src="{{ $agent->user->profile_image? : asset('assets/images/logo-mark.png') }}" alt="{{ Auth::user()->name }}" />
                                             </td>
                                             <td class="px-6 py-4">
                                                 <a href="{{ route('agent.show', ['uuid' => $agent->user->uuid]) }}" class="hover:text-blue-300 hover:underline">
@@ -80,8 +80,8 @@
                                             <td class="px-6 py-4">
                                                 {{ $agent->state->name }}, {{ $agent->lga->name }}
                                             </td>
-                                            <td>
-                                                some actions
+                                            <td class="text-center">
+                                                <a href="{{ route('agent.show', ['uuid' => $agent->user->uuid]) }}" class="bg-blue-500 hover:bg-blue-600 px-2 py-1 rounded text-white">View</a>
                                             </td>
                                         </tr>
                                     @empty
