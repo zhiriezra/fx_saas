@@ -50,8 +50,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/sales/farmers/{uuid}', [FarmersController::class, 'show'])->name('farmer.show');
 
     // Farms routes
-    Route::get('/sales/farms', [FarmsController::class, 'index'])->name('farms');
-    Route::get('/sales/farms/{uuid}', [FarmsController::class, 'show'])->name('farm.show');
+    Route::get('/sales/farm_season', [FarmsController::class, 'index'])->name('farms');
+    Route::get('/sales/farm_season/{uuid}', [FarmsController::class, 'show'])->name('farm.show');
 
     // Farm visitations
     Route::get('sales/farms/{farm}/visitations', [FarmsController::class, 'farmVisitations'])->name('farm.farm-visitations');
