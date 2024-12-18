@@ -2,9 +2,9 @@
     <div class="p-1 lg:p-1 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
         <div class="p-7 grid grid-cols-2 gap-8 justify-between">
             <div class="space-y-4">
-                <button wire:click="exportAgentsToExcel"  type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-500 dark:focus:ring-green-800">
-                    <span wire:loading.remove wire:target="exportAgentsToExcel">Export</span>
-                        <span wire:loading wire:target="exportAgentsToExcel">
+                <button wire:click="exportFarmersToExcel"  type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-500 dark:focus:ring-green-800">
+                    <span wire:loading.remove wire:target="exportFarmersToExcel">Export</span>
+                        <span wire:loading wire:target="exportFarmersToExcel">
                             <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
                             Exporting...
                         </span>
@@ -68,11 +68,12 @@
         </script>
         <!-- refreshing every 5 sec -->
         <div wire:poll.5s="refreshNotifications"></div>
-        <h4 class="text-2xl font-bold pl-7">Agent List <span class="text-lg font-normal">({{ $agents->count() }})</span> </h4>
+        <h4 class="text-2xl font-bold pl-7">Farmer List <span class="text-lg font-normal">({{ $farmers->count() }})</span> </h4>
     </div>
 
 
     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+
         <div class="bg-gray-100 dark:bg-gray-800 bg-opacity-25 grid grid-cols-1 gap-6 lg:gap-8 p-6 lg:p-8">
 
             <div class="relative overflow-x-auto">
@@ -100,33 +101,33 @@
                         </tr>
                     </thead>
                     <tbody class="">
-                        @forelse ($agents as $key => $agent)
+                        @forelse ($farmers as $key => $farmer)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <td class="px-6 py-4">
                                     {{ $key+1 }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    <img class="h-8 w-8 rounded-full object-cover" src="{{ $agent->user->profile_image? : asset('assets/images/logo-mark.png') }}" alt="{{ Auth::user()->name }}" />
+                                    <img class="h-8 w-8 rounded-full object-cover" src="{{ asset('assets/images/logo-mark.png') }}" alt="Img Here" />
                                 </td>
                                 <td class="px-6 py-4">
-                                    <a href="{{ route('agent.show', ['uuid' => $agent->user->uuid]) }}" class="hover:text-blue-300 hover:underline">
-                                        {{ $agent->user->firstname }} {{ $agent->user->lastname }}
+                                    <a href="{{ route('farmer.show', ['uuid' => $farmer->uuid]) }}" class="hover:text-blue-300 hover:underline">
+                                        {{ $farmer->fname }} {{ $farmer->lname }}
                                     </a>
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $agent->user->phone }}
+                                    {{ $farmer->mobile_no }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $agent->state->name }}, {{ $agent->lga->name }}
+                                    {{ $farmer->state->name }}, {{ $farmer->lga->name }}
                                 </td>
                                 <td class="text-center">
-                                    <a href="{{ route('agent.show', ['uuid' => $agent->user->uuid]) }}" class="bg-blue-500 hover:bg-blue-600 px-2 py-1 rounded text-white">View</a>
+                                    <a href="{{ route('farmer.show', ['uuid' => $farmer->uuid]) }}" class="bg-blue-500 hover:bg-blue-600 px-2 py-1 rounded text-white">View</a>
                                 </td>
                             </tr>
                         @empty
                         <tr>
                             <td colspan="6" class="text-center">
-                                <p class="text-red-300">No agents deployed for your company</p>
+                                <p class="text-red-300">No farmers deployed for your company</p>
                             </td>
 
                         </tr>
@@ -138,8 +139,7 @@
 
         </div>
         <div class="p-4">
-            {{ $agents->links() }}
+            {{ $farmers->links() }}
         </div>
     </div>
 </div>
-

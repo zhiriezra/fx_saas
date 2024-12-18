@@ -86,7 +86,7 @@ class Index extends Component
                             $search->where('name', 'like', '%' . $this->search . '%');
                         });
                 });
-            })->paginate(100);
+            })->paginate(50);
 
             return view('livewire.agent.index',[
             'agents' => $agents,

@@ -28,7 +28,7 @@ class EnsureCurrentTeam
             });
 
             Farmer::addGlobalScope(function($builder) use ($id){
-                $builder->where('team_id', $id);
+                $builder->where('farmers.team_id', $id);
             });
 
             Vendor::addGlobalScope(function($builder) use ($id){
